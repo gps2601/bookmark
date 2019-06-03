@@ -1,5 +1,10 @@
 require 'simplecov'
+require 'capybara/rspec'
+require './app/bookmark.rb'
+
 SimpleCov.start
+
+Capybara.app = Bookmark
 
 RSpec.configure do |config|
 

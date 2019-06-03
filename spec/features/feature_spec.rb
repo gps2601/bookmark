@@ -18,20 +18,21 @@ feature 'can view bookmarks' do
     visit('/')
     click_on 'View bookmarks'
 
-    expect(page).to have_content('http://www.google.com')
-    expect(page).to have_content('http://www.youtube.com')
-    expect(page).to have_content('http://www.destroyallsoftware.com')
+    expect(page).to have_content('Google')
+    expect(page).to have_content('Youtube')
+    expect(page).to have_content('Destroy software')
   end
 end
 
-feature 'can add bookmark' do
+feature 'can add bookmark with a title' do
   scenario 'click on add book, fill in form and see the bookmark added' do
-    visit('/')
-    click_on 'Add bookmark'
+    visit('/bookmarks/new')
 
     fill_in 'url', with: 'wwww.added-bookmark.com'
-    click_on 'Submit bookmark'
+    fill_in 'title', with: 'Added Bookmark'
 
-    expect(page).to have_content('wwww.added-bookmark.com')
+    click_button('Submit')
+
+    expect(page).to have_content('Added Bookmark')
   end
 end

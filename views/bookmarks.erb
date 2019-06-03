@@ -11,12 +11,12 @@
   <body>
     <ul class='navbar'>
       <li class='navbar'><a class='navbar' href="/bookmarks">View bookmarks</a></li>
-      <li class='navbar'><a class='navbar' href="/new-bookmark">Add bookmark</a></li>
+      <li class='navbar'><a class='navbar' href="/bookmarks/new">Add bookmark</a></li>
     </ul>
     <div>Your bookmarks:
       <ul>
         <% @bookmarks.each do |bookmark| %>
-          <li><%= bookmark %></li>
+          <a href='<%= bookmark.url %>'><li> <%= bookmark.name %> </li></a>
         <% end %>
       </ul>
     </div>

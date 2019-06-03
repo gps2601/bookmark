@@ -1,4 +1,5 @@
 require 'bookmarker'
+require 'bookmark'
 
 describe Bookmarker do
   describe '#initialize' do
@@ -20,19 +21,19 @@ describe Bookmarker do
 
     it 'calls has entries in the database' do
       bookmarks = Bookmarker.all
-
-      expect(bookmarks).to include('http://www.google.com')
-      expect(bookmarks).to include('http://www.youtube.com')
-      expect(bookmarks).to include('http://www.destroyallsoftware.com')
+      expect(bookmarks.find{|bookmark| bookmark.name == 'Google'}).to_not be(nil)
+      expect(bookmarks.find{|bookmark| bookmark.name == 'Youtube'}).to_not be(nil)
+      expect(bookmarks.find{|bookmark| bookmark.name == 'Destroy software'}).to_not be(nil)
+      expect(bookmarks.find{|bookmark| bookmark.name == 'added title'}).to be(nil)
     end
   end
 
   describe '#create' do
     it 'can add an entry to the database' do
-      Bookmarker.create('www.added-url.co.uk')
+      Bookmarker.create('added title', 'www.added-url.co.uk')
       bookmarks = Bookmarker.all
 
-      expect(bookmarks).to include('www.added-url.co.uk')
+      expect(bookmarks.find{|bookmark| bookmark.name == 'added title'}).to_not be(nil)
     end
   end
 end

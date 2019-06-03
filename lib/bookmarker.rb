@@ -1,22 +1,26 @@
 require 'pg'
+require './lib/bookmark'
 
 class Bookmarker
   attr_reader :bookmarks
 
-  def initialize(bookmarks = [])
+  def initialize(bookmarks = [], bookmark_class = Bookmark)
     @bookmarks = bookmarks
+    @bookmark_class = bookmark_class
   end
 
   def self.all
     connection = PG.connect(dbname: get_database())
     result = connection.exec("SELECT * FROM bookmarks;")
 
-    result.map{|bookmark| bookmark['url']}
+    result.map{ |bookmark|
+      Bookmark.new(bookmark['title'],bookmark['url'])
+    }
   end
 
-  def self.create(url)
+  def self.create(title, url)
     connection = PG.connect(dbname: get_database())
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('#{url}')")
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}')")
   end
 
   private

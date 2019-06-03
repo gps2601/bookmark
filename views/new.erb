@@ -5,18 +5,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel='icon' href='https://img.icons8.com/metro/420/bookmark.png'>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
     <title>Bookmark!</title>
   </head>
   <body>
     <ul class='navbar'>
       <li class='navbar'><a class='navbar' href="/bookmarks">View bookmarks</a></li>
-      <li class='navbar'><a class='navbar' href="/new-bookmark">Add bookmark</a></li>
+      <li class='navbar'><a class='navbar' href="/bookmarks/new">Add bookmark</a></li>
     </ul>
     <div>
-      <form action="add-bookmark" method="post">
+      <form action="/bookmarks" method="post">
+        <input type='text' name='title'/>
         <input type='text' name='url'/>
-        <button>Submit bookmark</button>
+        <input type="submit" value="Submit"/>
       </form>
     </div>
   </body>

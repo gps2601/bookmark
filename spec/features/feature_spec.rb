@@ -23,3 +23,15 @@ feature 'can view bookmarks' do
     expect(page).to have_content('http://www.destroyallsoftware.com')
   end
 end
+
+feature 'can add bookmark' do
+  scenario 'click on add book, fill in form and see the bookmark added' do
+    visit('/')
+    click_on 'Add bookmark'
+
+    fill_in 'url', with: 'wwww.added-bookmark.com'
+    click_on 'Submit bookmark'
+
+    expect(page).to have_content('wwww.added-bookmark.com')
+  end
+end

@@ -18,13 +18,21 @@ describe Bookmarker do
 
   describe '#all' do
 
-    it 'calls connect on the database' do
-      bookmarks_double = double('bookmarks_double')
+    it 'calls has entries in the database' do
       bookmarks = Bookmarker.all
 
       expect(bookmarks).to include('http://www.google.com')
       expect(bookmarks).to include('http://www.youtube.com')
       expect(bookmarks).to include('http://www.destroyallsoftware.com')
+    end
+  end
+
+  describe '#create' do
+    it 'can add an entry to the database' do
+      Bookmarker.create('www.added-url.co.uk')
+      bookmarks = Bookmarker.all
+
+      expect(bookmarks).to include('www.added-url.co.uk')
     end
   end
 end

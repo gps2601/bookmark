@@ -13,12 +13,11 @@
       <li class='navbar'><a class='navbar' href="/bookmarks">View bookmarks</a></li>
       <li class='navbar'><a class='navbar' href="/new-bookmark">Add bookmark</a></li>
     </ul>
-    <div>Your bookmarks:
-      <ul>
-        <% @bookmarks.each do |bookmark| %>
-          <li><%= bookmark %></li>
-        <% end %>
-      </ul>
+    <div>
+      <form action="add-bookmark" method="post">
+        <input type='text' name='url'/>
+        <button>Submit bookmark</button>
+      </form>
     </div>
   </body>
 </html>

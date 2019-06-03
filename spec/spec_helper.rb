@@ -1,7 +1,7 @@
 require 'simplecov'
 require 'capybara'
 require 'capybara/rspec'
-require './app/bookmark.rb'
+require './bookmark.rb'
 
 ENV['RACK_ENV'] = 'test'
 

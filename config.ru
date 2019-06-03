@@ -1,2 +1,2 @@
-require_relative './app/bookmark.rb'
+require_relative 'bookmark.rb'
 run Bookmark

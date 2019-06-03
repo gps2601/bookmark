@@ -1,2 +1,2 @@
-require_relative 'bookmark.rb'
-run Bookmark
+require_relative 'app.rb'
+run App

@@ -1,13 +1,13 @@
 require 'simplecov'
 require 'capybara'
 require 'capybara/rspec'
-require './bookmark.rb'
+require './app.rb'
 
 ENV['RACK_ENV'] = 'test'
 
 SimpleCov.start
 
-Capybara.app = Bookmark
+Capybara.app = App
 
 RSpec.configure do |config|
 

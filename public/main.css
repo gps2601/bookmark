@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-ul {
+ul.navbar {
   font-family: 'Open Sans', sans-serif;
   list-style-type: none;
   margin: 0;
@@ -9,11 +9,11 @@ ul {
   background-color: #333;
 }
 
-li {
+li.navbar {
   float: left;
 }
 
-li a {
+li.navbar a.navbar {
   display: block;
   color: white;
   text-align: center;
@@ -21,7 +21,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+li.navbar a.navbar:hover {
   background-color: #111;
 }
 

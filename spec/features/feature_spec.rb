@@ -13,4 +13,13 @@ feature 'can view bookmarks' do
 
     expect(page).to have_content('Your bookmarks:')
   end
+
+  scenario 'click on view bookmarks and see bookmarks' do
+    visit('/')
+    click_on 'View bookmarks'
+
+    expect(page).to have_content('http://www.google.com')
+    expect(page).to have_content('http://www.youtube.com')
+    expect(page).to have_content('http://www.facebook.com')
+  end
 end

@@ -9,9 +9,15 @@
     <title>Bookmark!</title>
   </head>
   <body>
-    <ul>
-      <li><a href="/bookmarks">View bookmarks</a></li>
+    <ul class='navbar'>
+      <li class='navbar'><a class='navbar' href="/bookmarks">View bookmarks</a></li>
     </ul>
-    <div>Your bookmarks:</div>
+    <div>Your bookmarks:
+      <ul>
+        <% @bookmarks.each do |bookmark| %>
+          <li><%= bookmark %></li>
+        <% end %>
+      </ul>
+    </div>
   </body>
 </html>

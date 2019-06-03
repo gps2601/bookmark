@@ -17,12 +17,14 @@ describe Bookmarker do
   end
 
   describe '#all' do
-    it 'returns a hardcoded list of websites' do
-      expect(Bookmarker.all).to eq(
-        ["http://www.google.com",
-          "http://www.youtube.com",
-          "http://www.facebook.com"]
-        )
+
+    it 'calls connect on the database' do
+      bookmarks_double = double('bookmarks_double')
+      bookmarks = Bookmarker.all
+
+      expect(bookmarks).to include('http://www.google.com')
+      expect(bookmarks).to include('http://www.youtube.com')
+      expect(bookmarks).to include('http://www.destroyallsoftware.com')
     end
   end
 end

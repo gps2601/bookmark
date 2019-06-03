@@ -20,6 +20,6 @@ feature 'can view bookmarks' do
 
     expect(page).to have_content('http://www.google.com')
     expect(page).to have_content('http://www.youtube.com')
-    expect(page).to have_content('http://www.facebook.com')
+    expect(page).to have_content('http://www.destroyallsoftware.com')
   end
 end

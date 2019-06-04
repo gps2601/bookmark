@@ -21,11 +21,10 @@ describe Bookmarker do
 
     it 'calls has entries in the database' do
       bookmarks = Bookmarker.all
-      print bookmarks
-      expect(bookmarks.find{|bookmark| bookmark.name == 'Google'}).to_not be(nil)
-      expect(bookmarks.find{|bookmark| bookmark.name == 'Youtube'}).to_not be(nil)
-      expect(bookmarks.find{|bookmark| bookmark.name == 'Destroy software'}).to_not be(nil)
-      expect(bookmarks.find{|bookmark| bookmark.name == 'added title'}).to be(nil)
+      expect(bookmarks.find { |bookmark| bookmark.name == 'Google' }).to_not be(nil)
+      expect(bookmarks.find { |bookmark| bookmark.name == 'Youtube' }).to_not be(nil)
+      expect(bookmarks.find { |bookmark| bookmark.name == 'Destroy software' }).to_not be(nil)
+      expect(bookmarks.find { |bookmark| bookmark.name == 'added title' }).to be(nil)
     end
   end
 
@@ -34,7 +33,7 @@ describe Bookmarker do
       Bookmarker.create('added title', 'www.added-url.co.uk')
       bookmarks = Bookmarker.all
 
-      expect(bookmarks.find{|bookmark| bookmark.name == 'added title'}).to_not be(nil)
+      expect(bookmarks.find { |bookmark| bookmark.name == 'added title' }).to_not be(nil)
     end
   end
 end

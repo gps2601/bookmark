@@ -36,3 +36,14 @@ feature 'can add a bookmark' do
     expect(page).to have_link('Added Bookmark', href: 'wwww.added-bookmark.com')
   end
 end
+
+feature 'can delete a bookmark' do
+  scenario 'on bookmarks, click on remove bookmark - bookmark is deleted' do
+    visit('/bookmarks')
+    find("input[id='1']").click
+
+    expect(page).to have_content('Youtube')
+    expect(page).to have_content('Destroy software')
+    expect(page).to_not have_content('Google')
+  end
+end

@@ -8,13 +8,13 @@ describe Bookmark do
   end
 
   it 'can store a bookmark with a url' do
-    my_bookmark = Bookmark.new('id','bookmark name', 'bookmark url')
+    my_bookmark = Bookmark.new('id', 'bookmark name', 'bookmark url')
 
     expect(my_bookmark.url).to eq('bookmark url')
   end
 
   it 'can store a bookmark with an id' do
-    my_bookmark = Bookmark.new('id','bookmark name', 'bookmark url')
+    my_bookmark = Bookmark.new('id', 'bookmark name', 'bookmark url')
 
     expect(my_bookmark.id).to eq('id')
   end

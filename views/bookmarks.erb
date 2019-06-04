@@ -16,7 +16,13 @@
     <div>Your bookmarks:
       <ul>
         <% @bookmarks.each do |bookmark| %>
-          <a href='<%= bookmark.url %>'><li> <%= bookmark.name %> </li></a>
+          <li>
+            <a href='<%= bookmark.url %>'><%= bookmark.name %></a>
+            <form action='/bookmarks/<%= bookmark.id %>' method='post'>
+              <input type='hidden' name='_method' value='DELETE'>
+              <input type='submit' id='<%= bookmark.id %>' value='Delete'/>
+            </form>
+          </li>
         <% end %>
       </ul>
     </div>

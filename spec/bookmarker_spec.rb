@@ -20,6 +20,7 @@ describe Bookmarker do
   describe '#all' do
 
     it 'calls has entries in the database' do
+      DatabaseConnection.setup('bookmark_manager_test')
       bookmarks = Bookmarker.all
       expect(bookmarks.find { |bookmark| bookmark.name == 'Google' }).to_not be(nil)
       expect(bookmarks.find { |bookmark| bookmark.name == 'Youtube' }).to_not be(nil)

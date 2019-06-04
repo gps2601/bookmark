@@ -21,6 +21,7 @@ describe Bookmarker do
 
     it 'calls has entries in the database' do
       bookmarks = Bookmarker.all
+      print bookmarks
       expect(bookmarks.find{|bookmark| bookmark.name == 'Google'}).to_not be(nil)
       expect(bookmarks.find{|bookmark| bookmark.name == 'Youtube'}).to_not be(nil)
       expect(bookmarks.find{|bookmark| bookmark.name == 'Destroy software'}).to_not be(nil)

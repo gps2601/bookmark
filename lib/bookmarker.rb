@@ -14,7 +14,7 @@ class Bookmarker
     result = connection.exec("SELECT * FROM bookmarks;")
 
     result.map{ |bookmark|
-      Bookmark.new(bookmark['title'],bookmark['url'])
+      Bookmark.new(bookmark['id'], bookmark['title'], bookmark['url'])
     }
   end
 

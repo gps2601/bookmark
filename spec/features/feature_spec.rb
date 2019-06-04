@@ -24,7 +24,7 @@ feature 'can view bookmarks' do
   end
 end
 
-feature 'can add bookmark with a title' do
+feature 'can add a bookmark' do
   scenario 'click on add book, fill in form and see the bookmark added' do
     visit('/bookmarks/new')
 
@@ -33,6 +33,6 @@ feature 'can add bookmark with a title' do
 
     click_button('Submit')
 
-    expect(page).to have_content('Added Bookmark')
+    expect(page).to have_link('Added Bookmark', href: 'wwww.added-bookmark.com')
   end
 end

@@ -8,6 +8,11 @@ class Bookmarker
     @id, @name, @url = id, name, url
   end
 
+  def comments
+    result = DatabaseConnection.query("SELECT * FROM comments WHERE bookmark_id='#{id}';")
+    comments = result.map{|comment| comment['text']}
+  end
+
   def self.all
     result = DatabaseConnection.query("SELECT * FROM bookmarks;")
     bookmarks = result.map { |bookmark|

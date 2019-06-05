@@ -46,4 +46,13 @@ describe Bookmarker do
       expect(stored_bookmarks.find{|bookmark| bookmark.name == 'bad bookmark'}).to be(nil)
     end
   end
+
+  describe '#comments' do
+    it 'returns the comments associated with a bookmark' do
+      google_bookmark = Bookmarker.new('1', 'Google', 'http://www.google.com')
+
+      expect(google_bookmark.comments).to include('This is the first comment about google?!')
+      expect(google_bookmark.comments).to include('Another google comment')
+    end
+  end
 end

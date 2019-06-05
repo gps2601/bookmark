@@ -32,6 +32,9 @@
               <input hidden name='bookmark-id' value='<%= bookmark.id %>'>
               <input type='submit' id='comment-submit' value='Add comment'/>
             </form>
+            <% bookmark.comments.each do |comment| %>
+              <li><%= comment %></li>
+            <% end %>
           </li>
         <% end %>
       </ul>

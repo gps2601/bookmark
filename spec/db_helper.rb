@@ -2,7 +2,7 @@ require 'pg'
 
 def clear_down_tables
   connection = PG.connect(dbname: 'bookmark_manager_test')
-  connection.exec("TRUNCATE TABLE bookmarks, comments;")
+  connection.exec("TRUNCATE TABLE bookmarks, comments, bookmark_tags;")
 end
 
 def populate_bookmarks
@@ -16,6 +16,9 @@ end
 def populate_comments
   connection = PG.connect(dbname: 'bookmark_manager_test')
   connection.exec("INSERT INTO comments (text, bookmark_id) VALUES ('This is the first comment about google?!', 1);")
+  connection.exec("INSERT INTO comments (text, bookmark_id) VALUES ('Another google comment', 1);")
   connection.exec("INSERT INTO comments (text, bookmark_id) VALUES ('This is the first comment about youtube?!', 2);")
   connection.exec("INSERT INTO comments (text, bookmark_id) VALUES ('This is the first comment about software?!', 3);")
+  connection.exec("INSERT INTO comments (text, bookmark_id) VALUES ('This is the second comment about software?!', 3);")
+  connection.exec("INSERT INTO comments (text, bookmark_id) VALUES ('This is the third comment about software?!', 3);")
 end

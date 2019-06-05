@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/bookmarker'
+require './lib/commenter'
 require './database_connection_setup'
 require 'sinatra/flash'
 require 'uri'
@@ -33,8 +34,8 @@ class App < Sinatra::Base
   end
 
   post '/comments/new' do
-    print params
     Commenter.create(params['bookmark-id'], params['comment'])
+    redirect('/bookmarks')
   end
 
   run! if app_file == $0

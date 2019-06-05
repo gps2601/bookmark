@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './lib/bookmarker'
 require './lib/commenter'
+require './lib/tag'
 require './database_connection_setup'
 require 'sinatra/flash'
 require 'uri'
@@ -39,11 +40,8 @@ class App < Sinatra::Base
   end
 
   post '/tag/new' do
-    Tag.create(params['tag']) unless Tag.all.include?(params['tag'])
-
+    tag_id = Tag.create(params['tag'])
     BookmarkTag.create(params['bookmark-id'], tag_id)
-    print params
-
     redirect('/bookmarks')
   end
 

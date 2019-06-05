@@ -1,9 +1,7 @@
 require 'bookmarker'
-require 'bookmark'
 
 describe Bookmarker do
   describe '#all' do
-
     it 'calls has entries in the database' do
       DatabaseConnection.setup('bookmark_manager_test')
       bookmarks = Bookmarker.all

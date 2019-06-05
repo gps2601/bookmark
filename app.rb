@@ -23,11 +23,7 @@ class App < Sinatra::Base
 
   post '/bookmarks' do
     url = params['url']
-    if url =~ URI::regexp
-      Bookmarker.create(params['title'], url)
-    else
-      flash[:url_check] = "Invalid URL. '#{url}' is not a valid URL, please try again!"
-    end
+    flash[:url_check] = "Invalid URL. '#{url}' is not a valid URL, please try again!" unless Bookmarker.create(params['title'], url)
     redirect('/bookmarks')
   end
 

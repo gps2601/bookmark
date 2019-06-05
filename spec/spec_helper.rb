@@ -12,8 +12,9 @@ Capybara.app = App
 
 RSpec.configure do |config|
   config.before(:each) do
-    clear_down_table('bookmark_manager_test', 'bookmarks')
-    populate_bookmarks('bookmark_manager_test', 'bookmarks')
+    clear_down_tables()
+    populate_bookmarks()
+    populate_comments()
   end
 
   config.expect_with :rspec do |expectations|

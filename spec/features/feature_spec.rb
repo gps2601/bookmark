@@ -71,3 +71,13 @@ feature 'can comment on a bookmark' do
     expect(page).to have_content('this is my comment for element 1')
   end
 end
+
+feature 'can add a tag to a bookmark' do
+  scenario 'click on add tag and tag is then visible under that bookmark' do
+    visit('/bookmarks')
+    within(find_by_id('bookmark-1')) do
+      fill_in 'comment', with: 'this is my comment for element 1'
+      click_on 'comment-submit'
+    end
+  end
+end

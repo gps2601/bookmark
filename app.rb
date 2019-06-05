@@ -38,5 +38,14 @@ class App < Sinatra::Base
     redirect('/bookmarks')
   end
 
+  post '/tag/new' do
+    Tag.create(params['tag']) unless Tag.all.include?(params['tag'])
+
+    BookmarkTag.create(params['bookmark-id'], tag_id)
+    print params
+
+    redirect('/bookmarks')
+  end
+
   run! if app_file == $0
 end

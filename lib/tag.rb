@@ -8,4 +8,8 @@ class Tag
       tag['content']
     }
   end
+
+  def self.create(content)
+    DatabaseConnection.query("INSERT INTO tags (content) VALUES ('#{content}')") unless Tag.all.include?(content)
+  end
 end

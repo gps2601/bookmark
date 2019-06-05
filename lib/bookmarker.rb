@@ -5,8 +5,7 @@ require './lib/database_connection'
 class Bookmarker
   attr_reader :bookmarks
 
-  def initialize(bookmarks = [], bookmark_class = Bookmark)
-    @bookmarks = bookmarks
+  def initialize(bookmark_class = Bookmark)
     @bookmark_class = bookmark_class
   end
 

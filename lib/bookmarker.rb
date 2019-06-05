@@ -13,6 +13,11 @@ class Bookmarker
     comments = result.map{|comment| comment['text']}
   end
 
+  def tags
+    result = DatabaseConnection.query("SELECT * FROM tags WHERE tags.id in (SELECT tag_id from bookmark_tags WHERE bookmark_id = #{id});")
+    tags = result.map{|tag| tag['content']}
+  end
+
   def self.all
     result = DatabaseConnection.query("SELECT * FROM bookmarks;")
     bookmarks = result.map { |bookmark|

@@ -40,6 +40,9 @@
             <% bookmark.comments.each do |comment| %>
               <li><%= comment %></li>
             <% end %>
+            <% bookmark.tags.each do |tag| %>
+              <li><%= tag %></li>
+            <% end %>
           </li>
         <% end %>
       </ul>

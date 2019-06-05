@@ -16,6 +16,7 @@ RSpec.configure do |config|
     populate_bookmarks()
     populate_comments()
     populate_tags()
+    populate_bookmark_tags()
   end
 
   config.expect_with :rspec do |expectations|

@@ -28,12 +28,12 @@ feature 'can add a bookmark' do
   scenario 'click on add book, fill in form and see the bookmark added' do
     visit('/bookmarks/new')
 
-    fill_in 'url', with: 'wwww.added-bookmark.com'
+    fill_in 'url', with: 'https://wwww.added-bookmark.com'
     fill_in 'title', with: 'Added Bookmark'
 
     click_button('Submit')
 
-    expect(page).to have_link('Added Bookmark', href: 'wwww.added-bookmark.com')
+    expect(page).to have_link('Added Bookmark', href: 'https://wwww.added-bookmark.com')
   end
 end
 
@@ -45,5 +45,17 @@ feature 'can delete a bookmark' do
     expect(page).to have_content('Youtube')
     expect(page).to have_content('Destroy software')
     expect(page).to_not have_content('Google')
+  end
+end
+
+feature 'it can validate an url' do
+  scenario 'email is invalid' do
+    visit('/bookmarks/new')
+
+    fill_in 'url', with: 'not valid url'
+    fill_in 'title', with: 'Invalid Url Title'
+    click_button('Submit')
+
+    expect(page).to have_content('Invalid URL')
   end
 end

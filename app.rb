@@ -1,9 +1,12 @@
 require 'sinatra/base'
 require './lib/bookmarker'
 require './database_connection_setup'
+require 'sinatra/flash'
+require 'uri'
 
 class App < Sinatra::Base
   enable :sessions, :method_override
+  register Sinatra::Flash
 
   get '/' do
     erb :index
@@ -19,7 +22,12 @@ class App < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmarker.create(params['title'], params['url'])
+    url = params['url']
+    if url =~ URI::regexp
+      Bookmarker.create(params['title'], url)
+    else
+      flash[:url_check] = "Invalid URL. '#{url}' is not a valid URL, please try again!"
+    end
     redirect('/bookmarks')
   end
 

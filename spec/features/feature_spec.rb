@@ -40,7 +40,7 @@ end
 feature 'can delete a bookmark' do
   scenario 'on bookmarks, click on remove bookmark - bookmark is deleted' do
     visit('/bookmarks')
-    find("input[id='1']").click
+    find("input[id='delete-1']").click
 
     expect(page).to have_content('Youtube')
     expect(page).to have_content('Destroy software')
@@ -57,5 +57,17 @@ feature 'it can validate an url' do
     click_button('Submit')
 
     expect(page).to have_content('Invalid URL')
+  end
+end
+
+feature 'can comment on a bookmark' do
+  scenario 'click on add comment and comment is then visible on the page' do
+    visit('/bookmarks')
+    within(find_by_id('comment-1')) do
+      fill_in 'comment', with: 'this is my comment for element 1'
+      click_on 'comment-submit'
+    end
+
+    expect(page).to have_content('this is my comment for element 1')
   end
 end

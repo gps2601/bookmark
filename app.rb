@@ -32,5 +32,10 @@ class App < Sinatra::Base
     redirect('/bookmarks')
   end
 
+  post '/comments/new' do
+    print params
+    Commenter.create(params['bookmark-id'], params['comment'])
+  end
+
   run! if app_file == $0
 end

@@ -1,18 +1,17 @@
 require 'pg'
-require './lib/bookmark'
 require './lib/database_connection'
 
 class Bookmarker
-  attr_reader :bookmarks
+  attr_reader :id, :name, :url
 
-  def initialize(bookmark_class = Bookmark)
-    @bookmark_class = bookmark_class
+  def initialize(id, name, url)
+    @id, @name, @url = id, name, url
   end
 
   def self.all
     result = DatabaseConnection.query("SELECT * FROM bookmarks;")
     bookmarks = result.map { |bookmark|
-      Bookmark.new(bookmark['id'], bookmark['title'], bookmark['url'])
+      Bookmarker.new(bookmark['id'], bookmark['title'], bookmark['url'])
     }
   end
 

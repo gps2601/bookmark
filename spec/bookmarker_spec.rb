@@ -1,6 +1,26 @@
 require 'bookmarker'
 
 describe Bookmarker do
+  describe '#initialize' do
+    it 'can store a bookmark with a name' do
+      my_bookmark = Bookmarker.new('id', 'bookmark name', 'bookmark url')
+
+      expect(my_bookmark.name).to eq('bookmark name')
+    end
+
+    it 'can store a bookmark with a url' do
+      my_bookmark = Bookmarker.new('id', 'bookmark name', 'bookmark url')
+
+      expect(my_bookmark.url).to eq('bookmark url')
+    end
+
+    it 'can store a bookmark with an id' do
+      my_bookmark = Bookmarker.new('id', 'bookmark name', 'bookmark url')
+
+      expect(my_bookmark.id).to eq('id')
+    end
+  end
+
   describe '#all' do
     it 'calls has entries in the database' do
       DatabaseConnection.setup('bookmark_manager_test')

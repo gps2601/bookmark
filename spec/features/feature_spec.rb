@@ -82,3 +82,16 @@ feature 'can add a tag to a bookmark' do
     expect(page).to have_content('drinks')
   end
 end
+
+feature 'registration' do
+  scenario 'can fill in form an have info stored in session' do
+    visit('/register')
+    fill_in 'username', with: 'gps2601'
+    fill_in 'password', with: 'test123'
+    fill_in 'name', with: 'Geoff'
+
+    click_on 'Register'
+
+    expect(page).to have_content('Welcome Geoff!')
+  end
+end

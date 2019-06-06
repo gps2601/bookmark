@@ -2,7 +2,7 @@ require 'pg'
 
 def clear_down_tables
   connection = PG.connect(dbname: 'bookmark_manager_test')
-  connection.exec("TRUNCATE TABLE bookmarks, comments, bookmark_tags, tags;")
+  connection.exec("TRUNCATE TABLE bookmarks, comments, bookmark_tags, tags, users;")
 
 end
 

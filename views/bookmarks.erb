@@ -12,12 +12,14 @@
     <ul class='navbar'>
       <li class='navbar'><a class='navbar' href="/bookmarks">View bookmarks</a></li>
       <li class='navbar'><a class='navbar' href="/bookmarks/new">Add bookmark</a></li>
+      <li class='navbar'><a class='navbar' href="/register">Register</a></li>
     </ul>
     <% flash.keys.each do |type| %>
       <div data-alert class="flash <%= type %> alert-box radius">
         <%= flash[type] %>
       </div>
       <% end %>
+    <div>Welcome <%= @name %>!</div>
     <div>Your bookmarks:
       <ul>
         <% @bookmarks.each do |bookmark| %>

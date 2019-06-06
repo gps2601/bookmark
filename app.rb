@@ -3,6 +3,7 @@ require './lib/bookmarker'
 require './lib/commenter'
 require './lib/tag'
 require './lib/bookmark_tag'
+require './lib/user'
 require './database_connection_setup'
 require 'sinatra/flash'
 require 'uri'
@@ -17,6 +18,9 @@ class App < Sinatra::Base
 
   get '/bookmarks' do
     @bookmarks = Bookmarker.all
+    users = User.all
+    user = users.find{|user| user.id == session['id']}
+    @name = user.name unless user.nil?
     erb :bookmarks
   end
 
@@ -43,6 +47,16 @@ class App < Sinatra::Base
   post '/tag/new' do
     tag_id = Tag.create(params['tag'])
     BookmarkTag.create(params['bookmark-id'], tag_id)
+    redirect('/bookmarks')
+  end
+
+  get '/register' do
+    erb :register
+  end
+
+  post '/register/new' do
+    id = User.create(params['username'], params['password'], params['name'])
+    session[:id] = id[0]['id']
     redirect('/bookmarks')
   end
 

@@ -1,7 +1,9 @@
 require 'pg'
 require './lib/database_connection'
+require 'bcrypt'
 
 class User
+  include BCrypt
   attr_reader :id, :username, :password, :name
 
   def initialize(id, username, password, name)
@@ -14,6 +16,7 @@ class User
   end
 
   def self.create(username, password, name)
-    DatabaseConnection.query("INSERT INTO users (username, password, name) VALUES ('#{username}', '#{password}', '#{name}') RETURNING *")
+    encrypted_password = Password.create(password)
+    DatabaseConnection.query("INSERT INTO users (username, password, name) VALUES ('#{username}', '#{encrypted_password}', '#{name}') RETURNING *")
   end
 end
